@@ -2,9 +2,11 @@ package com.dto;
 
 public class SellerDealDto {
 
-	private Integer id;
 	private ItemDto item;
-	private long hours;
+	
+	private int hours;
+
+	private int maxAvailableQuantity;
 
 	public ItemDto getItem() {
 		return item;
@@ -14,20 +16,20 @@ public class SellerDealDto {
 		this.item = item;
 	}
 
-	public long getHours() {
+	public int getHours() {
 		return hours;
 	}
 
-	public void setHours(long hours) {
+	public void setHours(int hours) {
 		this.hours = hours;
 	}
 
-	public Integer getId() {
-		return id;
+	public int getMaxAvailableQuantity() {
+		return maxAvailableQuantity;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setMaxAvailableQuantity(int maxAvailableQuantity) {
+		this.maxAvailableQuantity = maxAvailableQuantity;
 	}
 
 }

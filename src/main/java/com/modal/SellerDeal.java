@@ -2,22 +2,31 @@ package com.modal;
 
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+
 public class SellerDeal {
 
-	// auto
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer dealId;
+	
+	@ManyToMany
+	@JoinColumn(name="itemId")
 	private Item item;
+	
 	private Integer maxAvailableQuantity;
+	
 	private Date startTime;
+	
 	private Date endTime;
+	
+	private boolean isDealEnded;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	public Item getItem() {
 		return item;
@@ -50,5 +59,23 @@ public class SellerDeal {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
+
+	public boolean isDealEnded() {
+		return isDealEnded;
+	}
+
+	public void setDealEnded(boolean isDealEnded) {
+		this.isDealEnded = isDealEnded;
+	}
+
+	public Integer getDealId() {
+		return dealId;
+	}
+
+	public void setDealId(Integer dealId) {
+		this.dealId = dealId;
+	}
+
+	
 
 }

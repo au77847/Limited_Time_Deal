@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dto.ItemDto;
+import com.dto.ClaimDto;
 import com.dto.SellerDealDto;
 import com.service.DealService;
 
@@ -18,25 +18,28 @@ public class DealController {
 
 	@PostMapping("/createDeal")
 	private void createDeal(@RequestBody SellerDealDto dealDto) {
-		//put a dto validator here for values 
+		//put a dto validator here for values like quantity,price should be positive.Hours must be an integer value
 		service.createDeal(dealDto);
 	}
 	
 	@DeleteMapping("/endDeal")
-	private void endDeal(Integer id) {
-		service.endDeal(id);
+	private void endDeal(Integer dealId) {
+		service.endDeal(dealId);
 	}
 	
 	@PutMapping("/updateDeal")
-	private void updateDeal(Integer dealId, Integer numberofItem, long endTime) {
+	private void updateDeal(Integer dealId, Integer numberofItem, int increaseHours) {
 		// put a validation here also that number of item can not be negative 
-		service.increaseDealDetails(dealId,numberofItem,endTime);
+		service.updateExixtingDealDetails(dealId,numberofItem,increaseHours);
 	}
 	
 	@PostMapping("/claimDeal")
-	private ItemDto claimDeal(ItemDto itemdto) {
-		//duration over
-		return itemdto;
+	private void claimDeal(ClaimDto claimDto) {
+		//first need to validate with end time for a deal.	
+	    // Also validate that claimed item is available or not.
+		// Validate with user Id and Item id that item is already bought by the user or not
+	  
+		//claim a deal and update the quantity on that deal id and update the history
 		
 	}
 	
